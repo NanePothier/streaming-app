@@ -1,0 +1,33 @@
+.green {
+  background-color: rgb(54, 247, 134);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.green:hover,
+.green:active {
+  background-color: rgb(15, 180, 84);
+  cursor: pointer;
+}
+
+.grey {
+  background-color: white;
+}
+
+.transparent {
+  background: transparent;
+  font-size: 1.2rem;
+  padding: 30px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.transparent:hover,
+.transparent:active {
+  color: #ccc;
+}
