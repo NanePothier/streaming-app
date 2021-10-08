@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import classes from './Welcome.module.css';
+import classes from './StartScreen.module.css';
 import Button from '../UI/Button';
 import LoginModal from '../Login/LoginModal';
 import StartTrial from './StartTrial';
 
-const Welcome = (props) => {
+const StartScreen = (props) => {
   const [loginFormShown, setLoginFormShown] = useState(false);
   const isAuth = useSelector((state) => state.isAuthenticated);
   const user = useSelector((state) => state.currentUser);
@@ -39,4 +39,4 @@ const Welcome = (props) => {
   );
 };
 
-export default Welcome;
+export default StartScreen;

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Button from '../UI/Button';
 import classes from './StartTrial.module.css';
 
@@ -10,7 +11,9 @@ const StartTrial = (props) => {
       <h2 className={classes.description}>
         Watch thousands of popular TV shows and movies
       </h2>
-      <Button btnClass="green" label="START FREE TRIAL" />
+      <Link to='/plans'>
+        <Button btnClass="green" label="START FREE TRIAL" />
+      </Link>
       <p className={classes.info}>
         Free trial available only for new customers.
       </p>
