@@ -23,11 +23,12 @@ const StartScreen = (props) => {
       {loginFormShown && <LoginModal onHideLoginForm={hideLoginFormHandler} />}
       <div className={classes.login}>
         <Button
-          btnClass="transparent"
-          label="Log In"
+          btnClasses="transparent"
           onClick={showLoginFormHandler}
           disabled={false}
-        />
+        >
+          LOG IN
+        </Button>
       </div>
       <StartTrial />
       {isAuth && (

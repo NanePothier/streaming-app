@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Welcome from './pages/Welcome';
-import Plans from './pages/Plans';
-import Home from './pages/Home';
+import WelcomePage from './pages/WelcomePage';
+import PlansPage from './pages/PlansPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -10,13 +10,13 @@ function App() {
         <Redirect to="/welcome" />
       </Route>
       <Route path="/welcome">
-        <Welcome />
+        <WelcomePage />
       </Route>
       <Route path="/plans">
-        <Plans />
+        <PlansPage />
       </Route>
       <Route path="/home">
-        <Home />
+        <HomePage />
       </Route>
       <Route path="*">{/*render not found page*/}</Route>
     </Switch>

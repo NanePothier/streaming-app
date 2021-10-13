@@ -1,18 +1,24 @@
 import React from 'react';
 import classes from './Button.module.css';
 
-const ConfirmButton = (props) => {
-  const btnClass = props.btnClass;
+const Button = (props) => {
+  const classesArray = props.btnClasses.trim().split(' ');
+
+  let allClasses = classesArray
+    .reduce((prevValue, currValue) => {
+      return prevValue + ` ${classes[currValue]}`;
+    }, '')
+    .trim();
 
   return (
     <button
-      className={classes[btnClass]}
+      className={allClasses}
       onClick={props.onClick}
       disabled={props.disabled}
     >
-      {props.label}
+      {props.children}
     </button>
   );
 };
 
-export default ConfirmButton;
+export default Button;

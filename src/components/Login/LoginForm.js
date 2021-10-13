@@ -66,7 +66,7 @@ const LoginForm = (props) => {
         ></input>
       </div>
       <div className={classes.actions}>
-        <Button btnClass="green" label="Log In" />
+        <Button btnClasses="green">Log In</Button>
       </div>
     </form>
   );
