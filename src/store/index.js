@@ -1,11 +1,9 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import authSlice from './auth-slice';
 
-const defaultState = {
-  isAuthenticated: false,
-  currentUser: '',
-};
-
-const storeReducer = (state = defaultState, action) => {
+// regular reducer function not needed anymore when using toolkit and slices
+/*
+const storeReducer = (state = initialAuthState, action) => {
   if (action.type === 'AUTH') {
     return {
       isAuthenticated: action.value.isAuth,
@@ -14,7 +12,11 @@ const storeReducer = (state = defaultState, action) => {
   }
   return state;
 };
+*/
 
-const store = createStore(storeReducer);
+const store = configureStore({
+  reducer: {auth: authSlice.reducer}
+});
 
+export const authActions = authSlice.actions;
 export default store;

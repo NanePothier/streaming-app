@@ -7,35 +7,32 @@
   align-items: center;
   background-color: white;
   box-shadow: 2px 2px 8px rgb(199, 199, 199);
-  padding: 30px;
+  padding: 40px;
 }
 
 .promote {
-  width: 25%;
-  max-width: 450px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  box-shadow: 2px 2px 8px rgb(199, 199, 199);
-  padding: 30px;
   border-top: 2px solid rgb(35, 201, 104);
-  height: 400px;
+  height: 420px;
   z-index: 10;
 }
 
 .badge {
   background-color: rgb(105, 105, 105);
   color: white;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   padding: 5px 20px;
   border-radius: 10px;
   margin: 10px 0 5px 0;
 }
 
+.title {
+  font-size: 1.3rem;
+}
+
 .info {
   color: rgb(35, 201, 104);
   margin: 15px 0;
+  font-size: 1.1rem;
 }
 
 .price {
@@ -43,8 +40,12 @@
 }
 
 .highlight {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: bold;
+}
+
+.month {
+  font-size: 1.1rem;
 }
 
 .description {

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from '../UI/Button';
 import classes from './LoginForm.module.css';
+import { authActions } from '../../store';
 
 const dummyUsers = [
   {
@@ -30,10 +31,7 @@ const LoginForm = (props) => {
         user.username === usernameRef.current.value &&
         user.password === passwordRef.current.value
       ) {
-        dispatch({
-          type: 'AUTH',
-          value: { isAuth: true, user: user.username },
-        });
+        dispatch(authActions.login(user.username));
         closeForm();
         history.push('/home');
       }

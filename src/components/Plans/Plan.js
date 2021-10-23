@@ -2,7 +2,9 @@ import classes from './Plan.module.css';
 import Button from '../UI/Button';
 
 const Plan = (props) => {
-  let planClasses = props.promote ? `${classes.promote}` : `${classes.plan}`;
+  let planClasses = props.promote
+    ? `${classes.plan} ${classes.promote}`
+    : `${classes.plan}`;
   let btnClasses = props.promote ? 'select black' : 'select white';
 
   const planSelectionHandler = () => {};
@@ -16,7 +18,7 @@ const Plan = (props) => {
       <div className={classes.info}>{props.info}</div>
       <div className={classes.price}>
         <span className={classes.highlight}>{`$${props.price}`}</span>
-        {`/month`}
+        <span className={classes.month}>{`/month`}</span>
       </div>
       <div className={classes.description}>{props.description}</div>
       <Button btnClasses={btnClasses} onClick={planSelectionHandler}>
