@@ -1,6 +1,7 @@
 .plan {
   width: 25%;
   height: 380px;
+  min-width: 280px;
   max-width: 450px;
   display: flex;
   flex-direction: column;
@@ -76,4 +77,16 @@
   background-color: rgb(32, 32, 32);
   border: 2px solid rgb(32, 32, 32);
   color: white;
+}
+
+@media (max-width: 40rem) {
+  .plan {
+    width: 90%;
+    min-width: 335px;
+    height: 400px;
+  }
+
+  .promote {
+    border: 2px solid rgb(35, 201, 104);
+  }
 }

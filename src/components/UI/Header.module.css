@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 2px 2px 5px rgb(197, 197, 197);
 }
 
 .logo {

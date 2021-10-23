@@ -20,3 +20,9 @@
   color: grey;
   margin-bottom: 0;
 }
+
+@media (max-width: 40rem) {
+  .background {
+    height: 100%;
+  }
+}
