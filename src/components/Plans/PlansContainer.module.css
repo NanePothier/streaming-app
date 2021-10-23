@@ -1,0 +1,28 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(248, 248, 248);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+.info {
+  color: grey;
+  margin-bottom: 0;
+}
+
+@media (max-width: 40rem) {
+  .background {
+    height: 100%;
+  }
+}

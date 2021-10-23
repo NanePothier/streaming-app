@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Button from '../UI/Button';
 import classes from './LoginForm.module.css';
+import { authActions } from '../../store';
 
 const dummyUsers = [
   {
     username: 'Sam',
-    password: 'September',
+    password: 'Sep',
   },
 ];
 
@@ -15,6 +17,7 @@ const LoginForm = (props) => {
   const passwordRef = useRef();
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const closeForm = () => {
     props.onClick();
@@ -28,11 +31,9 @@ const LoginForm = (props) => {
         user.username === usernameRef.current.value &&
         user.password === passwordRef.current.value
       ) {
-        dispatch({
-          type: 'AUTH',
-          value: { isAuth: true, user: user.username },
-        });
+        dispatch(authActions.login(user.username));
         closeForm();
+        history.push('/home');
       }
     });
   };
@@ -63,7 +64,7 @@ const LoginForm = (props) => {
         ></input>
       </div>
       <div className={classes.actions}>
-        <Button btnClass="green" label="Log In" />
+        <Button btnClasses="green">Log In</Button>
       </div>
     </form>
   );

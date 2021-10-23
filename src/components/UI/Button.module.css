@@ -1,10 +1,10 @@
 .green {
   background-color: rgb(54, 247, 134);
   border: none;
-  padding: 5px 10px;
+  padding: 1.2rem 2.1rem;
   border-radius: 8px;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 1.5rem 0;
 }
 
@@ -30,4 +30,47 @@
 .transparent:hover,
 .transparent:active {
   color: #ccc;
+}
+
+.transparent__black {
+  background: transparent;
+  font-size: 1.2rem;
+  padding: 25px;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-family: inherit;
+}
+
+.test {
+  color: blue;
+}
+
+.transparent__black:hover,
+.transparent__black:active {
+  color: rgb(110, 110, 110);
+}
+
+.select {
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 100%;
+  margin: 1rem 0;
+  margin-top: auto;
+}
+
+.white {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+}
+
+.black {
+  background-color: rgb(32, 32, 32);
+  border: 2px solid rgb(32, 32, 32);
+  color: white;
 }
