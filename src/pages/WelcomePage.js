@@ -1,7 +1,13 @@
-import StartScreen from '../components/Welcome/StartScreen';
+import StartScreen from "../components/Welcome/StartScreen";
+import AllPlanInfo from "../components/Welcome/AllPlanInfo";
 
 const WelcomePage = (props) => {
-  return <StartScreen />;
+  return (
+    <>
+      <StartScreen />
+      <AllPlanInfo />
+    </>
+  );
 };
 
 export default WelcomePage;
