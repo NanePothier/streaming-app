@@ -2,10 +2,14 @@ import React, { useState, useEffect, useCallback } from "react";
 import classes from "./Dropdown.module.css";
 import MenuItem from "./MenuItem";
 
-const Dropdown = ({ headerTitle, options, className }) => {
+const Dropdown = ({ headerTitle, options, className = "", onSelectOption }) => {
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [title, setTitle] = useState(headerTitle);
   const [menuItems, setMenuItems] = useState(options);
+
+  useEffect(() => {
+    setMenuItems(options);
+  }, [options.length]);
 
   useEffect(() => {
     if (isMenuShown) {
@@ -35,6 +39,7 @@ const Dropdown = ({ headerTitle, options, className }) => {
       });
       return updatedItems;
     });
+    onSelectOption(menuItem);
     closeMenu();
   };
 

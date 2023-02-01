@@ -3,7 +3,7 @@ import classes from "./Dropdown.module.css";
 
 const MenuItem = ({ id, title, selected, className, onSelectItem }) => {
   const handleItemClick = () => {
-    onSelectItem({ title });
+    onSelectItem({ id, title });
   };
 
   return (
