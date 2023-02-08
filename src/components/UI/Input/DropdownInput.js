@@ -5,7 +5,7 @@ import classes from "./DropdownInput.module.css";
 const DropdownInput = ({
   inputId,
   labelName,
-  defaultTitle,
+  title,
   options,
   onSelectItem,
   dropdownClass,
@@ -20,7 +20,7 @@ const DropdownInput = ({
         {labelName}
       </label>
       <Dropdown
-        headerTitle={defaultTitle}
+        title={title}
         options={options}
         className={dropdownClass}
         onSelectOption={handleItemSelection}

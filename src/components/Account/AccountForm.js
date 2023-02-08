@@ -10,44 +10,88 @@ import { MONTH_OPTIONS } from "./AccountConstants";
 const AccountForm = () => {
   const history = useHistory();
 
-  const [dayOptions, setDayOptions] = useState([]);
+  const [selectedDay, setSelectedDay] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedMonthId, setSelectedMonthId] = useState("");
+  const [dayOptions, setDayOptions] = useState([]);
+  const [yearOptions, setYearOptions] = useState([]);
 
   const firstNameRef = useRef("");
   const lastNameRef = useRef("");
-  const birthDayRef = useRef("");
-  const birthMonthRef = useRef("");
-  const birthYearRef = useRef("");
   const usernameRef = useRef("");
   const passwordRef = useRef("");
 
   useEffect(() => {
-    let numDays = 30;
+    const years = [];
+
+    for (let i = 2023; i >= 1920; i--) {
+      years.push({
+        id: `y${i}`,
+        title: i,
+        isSelected: false,
+      });
+    }
+    setYearOptions(years);
+  }, []);
+
+  useEffect(() => {
+    let numDays = 31;
     const optionsDays = [];
 
-    if (selectedMonth === 2) {
-      numDays = 29;
+    if (selectedMonthId === 2) {
+      numDays = 28;
+
+      if (selectedDay > 28) {
+        setSelectedDay("");
+      }
     } else if (
-      selectedMonth === 1 ||
-      selectedMonth === 3 ||
-      selectedMonth === 5 ||
-      selectedMonth === 7 ||
-      selectedMonth === 8 ||
-      selectedMonth === 10 ||
-      selectedMonth === 12
+      selectedMonthId === 4 ||
+      selectedMonthId === 6 ||
+      selectedMonthId === 9 ||
+      selectedMonthId === 11
     ) {
-      numDays = 31;
+      numDays = 30;
+
+      if (selectedDay > 30) {
+        setSelectedDay("");
+      }
     }
 
     for (let i = 1; i <= numDays; i++) {
       optionsDays.push({
         id: `d${i}`,
         title: i,
-        isSelected: false,
+        isSelected: i === selectedDay,
       });
     }
     setDayOptions(optionsDays);
-  }, [selectedMonth]);
+  }, [selectedMonthId]);
+
+  useEffect(() => {
+    if (selectedMonthId === 2) {
+      let numDays = 28;
+
+      if (selectedYear % 4 === 0) {
+        numDays = 29;
+      }
+
+      const days = [];
+
+      for (let i = 1; i <= numDays; i++) {
+        days.push({
+          id: `d${i}`,
+          title: i,
+          isSelected: i === selectedDay,
+        });
+      }
+      setDayOptions(days);
+
+      if (selectedDay > numDays) {
+        setSelectedDay("");
+      }
+    }
+  }, [selectedYear]);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -60,14 +104,14 @@ const AccountForm = () => {
   const handleDropdownSelection = (data) => {
     switch (data.inputId) {
       case BIRTH.DAY:
-        birthDayRef.current = data.title;
+        setSelectedDay(data.title);
         break;
       case BIRTH.MONTH:
-        birthMonthRef.current = data.title;
-        setSelectedMonth(data.id);
+        setSelectedMonth(data.title);
+        setSelectedMonthId(data.id);
         break;
       case BIRTH.YEAR:
-        birthYearRef.current = data.title;
+        setSelectedYear(data.title);
         break;
       default:
     }
@@ -82,12 +126,14 @@ const AccountForm = () => {
         inputId={"firstName"}
         inputType={"text"}
         labelName={"First Name"}
+        maxLength={20}
       />
       <MultiLineInput
         ref={lastNameRef}
         inputId={"lastName"}
         inputType={"text"}
         labelName={"Last Name"}
+        maxLength={40}
       />
 
       <div className={classes.birthdaySection}>
@@ -96,7 +142,7 @@ const AccountForm = () => {
           <DropdownInput
             inputId={BIRTH.DAY}
             labelName={"Day"}
-            defaultTitle={""}
+            title={selectedDay}
             options={dayOptions}
             onSelectItem={handleDropdownSelection}
             dropdownClass={classes.birthDay}
@@ -104,10 +150,18 @@ const AccountForm = () => {
           <DropdownInput
             inputId={BIRTH.MONTH}
             labelName={"Month"}
-            defaultTitle={""}
+            title={selectedMonth}
             options={MONTH_OPTIONS}
             onSelectItem={handleDropdownSelection}
             dropdownClass={classes.birthMonth}
+          />
+          <DropdownInput
+            inputId={BIRTH.YEAR}
+            labelName={"Year"}
+            title={selectedYear}
+            options={yearOptions}
+            onSelectItem={handleDropdownSelection}
+            dropdownClass={classes.birthYear}
           />
         </div>
       </div>
@@ -117,12 +171,14 @@ const AccountForm = () => {
         inputId={"username"}
         inputType={"text"}
         labelName={"Username"}
+        maxLength={20}
       />
       <MultiLineInput
         ref={passwordRef}
         inputId={"password"}
         inputType={"text"}
         labelName={"Password"}
+        maxLength={20}
       />
 
       <div className={classes.actions}>

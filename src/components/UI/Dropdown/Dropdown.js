@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import classes from "./Dropdown.module.css";
 import MenuItem from "./MenuItem";
 
-const Dropdown = ({ headerTitle, options, className = "", onSelectOption }) => {
+const Dropdown = ({ title, options, className = "", onSelectOption }) => {
   const [isMenuShown, setIsMenuShown] = useState(false);
-  const [title, setTitle] = useState(headerTitle);
   const [menuItems, setMenuItems] = useState(options);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ const Dropdown = ({ headerTitle, options, className = "", onSelectOption }) => {
   }, []);
 
   const handleMenuItemClick = (menuItem) => {
-    setTitle(menuItem.title);
     setMenuItems((prevItems) => {
       const updatedItems = prevItems.map((item) => {
         return {

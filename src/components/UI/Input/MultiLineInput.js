@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./MultiLineInput.module.css";
 
 const MultiLineInput = React.forwardRef(
-  ({ inputId, inputType, labelName }, ref) => {
+  ({ inputId, inputType, labelName, maxLength }, ref) => {
     return (
       <div className={classes.section}>
         <label htmlFor={inputId} className={classes.label}>
@@ -13,6 +13,7 @@ const MultiLineInput = React.forwardRef(
           id={inputId}
           ref={ref}
           className={classes.input}
+          maxLength={maxLength}
         ></input>
       </div>
     );
