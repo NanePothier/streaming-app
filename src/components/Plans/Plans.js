@@ -3,7 +3,7 @@ import classes from './Plans.module.css';
 import PlanSwitch from './PlanSwitch';
 import Plan from './Plan';
 
-const PLANS = [
+export const PLANS = [
   {
     id: 'p1',
     type: 'base',
@@ -37,7 +37,7 @@ const PLANS = [
   {
     id: 'p4',
     type: 'bundle',
-    title: 'BumbleBee (No Ads)',
+    title: 'BumbleBee (No Ads) + HBO',
     info: 'BumbleBee & HBO',
     price: 16.99,
     description:
@@ -47,7 +47,7 @@ const PLANS = [
   {
     id: 'p5',
     type: 'bundle',
-    title: 'BumbleBee',
+    title: 'BumbleBee + HBO',
     info: 'BumbleBee & HBO',
     price: 10.99,
     description:
@@ -57,7 +57,7 @@ const PLANS = [
   {
     id: 'p6',
     type: 'bundle',
-    title: 'BumbleBee + LiveTV',
+    title: 'BumbleBee + LiveTV + HBO',
     info: 'BumbleBee & HBO',
     price: 39.99,
     description:

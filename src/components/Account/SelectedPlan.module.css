@@ -1,0 +1,29 @@
+.planContainer {
+  height: 220px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 8px;
+  position: absolute;
+  top: 110px;
+  right: 74%;
+  box-shadow: 2px 2px 8px rgb(199, 199, 199);
+}
+
+.heading {
+  font-weight: bold;
+}
+
+.headingTop {
+  margin-top: 15px;
+}
+
+.info {
+  padding: 5px 10px;
+  border: 2px solid rgb(35, 201, 104);
+  border-radius: 4px;
+  margin: 8px 0px 15px 0px;
+}

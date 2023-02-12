@@ -1,4 +1,7 @@
+import React from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { userDataActions } from "../../store";
 import classes from "./Plan.module.css";
 import Button from "../UI/Button";
 
@@ -9,9 +12,11 @@ const Plan = (props) => {
   let btnClasses = props.promote ? "select black" : "select white";
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const planSelectionHandler = () => {
-    history.push("/account");
+    dispatch(userDataActions.updatePlan(props.id));
+    history.push(`/account?plan=${props.id}`);
   };
 
   return (

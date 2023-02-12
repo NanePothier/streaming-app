@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userDataActions } from "../../store";
 import classes from "./AccountForm.module.css";
 import Button from "../UI/Button";
 import MultiLineInput from "../UI/Input/MultiLineInput";
@@ -9,6 +11,7 @@ import { MONTH_OPTIONS } from "./AccountConstants";
 
 const AccountForm = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
@@ -98,6 +101,7 @@ const AccountForm = () => {
   };
 
   const onBackHandler = () => {
+    dispatch(userDataActions.clearPlan());
     history.push("/plans");
   };
 
