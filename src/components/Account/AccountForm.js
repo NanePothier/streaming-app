@@ -20,6 +20,8 @@ const AccountForm = () => {
   const [dayOptions, setDayOptions] = useState([]);
   const [yearOptions, setYearOptions] = useState([]);
 
+  const [showFirstNameWarn, setShowFirstNameWarn] = useState(false);
+
   const firstNameRef = useRef("");
   const lastNameRef = useRef("");
   const usernameRef = useRef("");
@@ -121,6 +123,20 @@ const AccountForm = () => {
     }
   };
 
+  const handleBlur = (inputId) => {
+    if (inputId === "firstName") {
+      if (firstNameRef.current.value.trim() === "") {
+        setShowFirstNameWarn(true);
+      }
+    }
+  };
+
+  const handleKeyDown = (inputId) => {
+    if (inputId === "firstName") {
+      setShowFirstNameWarn(false);
+    }
+  };
+
   return (
     <form onSubmit={onSubmitHandler} className={classes.form}>
       <h2>Create Account</h2>
@@ -131,6 +147,11 @@ const AccountForm = () => {
         inputType={"text"}
         labelName={"First Name"}
         maxLength={20}
+        autoFocus={true}
+        lettersOnly={true}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        showWarning={showFirstNameWarn}
       />
       <MultiLineInput
         ref={lastNameRef}
@@ -138,6 +159,8 @@ const AccountForm = () => {
         inputType={"text"}
         labelName={"Last Name"}
         maxLength={40}
+        autoFocus={false}
+        lettersOnly={true}
       />
 
       <div className={classes.birthdaySection}>
@@ -176,6 +199,7 @@ const AccountForm = () => {
         inputType={"text"}
         labelName={"Username"}
         maxLength={20}
+        autoFocus={false}
       />
       <MultiLineInput
         ref={passwordRef}
@@ -183,6 +207,7 @@ const AccountForm = () => {
         inputType={"text"}
         labelName={"Password"}
         maxLength={20}
+        autoFocus={false}
       />
 
       <div className={classes.actions}>

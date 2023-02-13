@@ -1,6 +1,6 @@
 .plan {
   width: 25%;
-  height: 380px;
+  height: 400px;
   min-width: 280px;
   max-width: 450px;
   display: flex;
@@ -88,5 +88,15 @@
 
   .promote {
     border: 2px solid rgb(35, 201, 104);
+  }
+}
+
+@media (min-width: 40rem) and (max-width: 84rem) {
+  .plan {
+    height: 440px;
+  }
+
+  .promote {
+    height: 460px;
   }
 }

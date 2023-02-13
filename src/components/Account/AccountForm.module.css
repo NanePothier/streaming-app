@@ -36,3 +36,9 @@
 .birthYear {
   width: 80px;
 }
+
+@media (max-width: 65rem) {
+  .form {
+    width: 470px;
+  }
+}
