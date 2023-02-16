@@ -8,10 +8,12 @@ import MultiLineInput from "../UI/Input/MultiLineInput";
 import DropdownInput from "../UI/Input/DropdownInput";
 import { BIRTH, INPUT, MONTH_OPTIONS } from "./AccountConstants";
 import { StringUtils } from "../../utils/StringUtils";
+import { useHttp } from "../../hooks/useHttp";
 
 const AccountForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { sendRequest, isLoading, data } = useHttp();
 
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
@@ -227,6 +229,23 @@ const AccountForm = () => {
     if (selectedYear === "") {
       isValid = false;
       setShowYearWarning(true);
+    }
+
+    if (isValid) {
+      const formattedDay = `${selectedDay}`.padStart(2, "0");
+      const formattedMonth = `${selectedMonthId}`.padStart(2, "0");
+
+      sendRequest(
+        "API/endpoint",
+        "POST",
+        {
+          firstName: firstNameRef.current.value.trim(),
+          lastName: lastNameRef.current.value.trim(),
+          birthday: `${formattedMonth}/${formattedDay}/${selectedYear}`,
+          username: usernameRef.current.value.trim(),
+          password: passwordRef.current.value.trim(),
+        }
+      );
     }
   };
 
