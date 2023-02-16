@@ -39,3 +39,7 @@
   border: #eca53b;
   cursor: pointer;
 }
+
+.warning {
+  border: 1.5px solid red;
+}

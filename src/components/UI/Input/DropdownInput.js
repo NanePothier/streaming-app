@@ -9,6 +9,7 @@ const DropdownInput = ({
   options,
   onSelectItem,
   dropdownClass,
+  showWarning,
 }) => {
   const handleItemSelection = (menuItem) => {
     onSelectItem({ ...menuItem, inputId });
@@ -24,6 +25,7 @@ const DropdownInput = ({
         options={options}
         className={dropdownClass}
         onSelectOption={handleItemSelection}
+        showWarning={showWarning}
       />
     </div>
   );

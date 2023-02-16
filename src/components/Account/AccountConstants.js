@@ -1,3 +1,10 @@
+export const INPUT = {
+  FIRST_NAME: "firstName",
+  LAST_NAME: "lastName",
+  USERNAME: "username",
+  PASSWORD: "password",
+};
+
 export const BIRTH = {
   DAY: "birthDay",
   MONTH: "birthMonth",

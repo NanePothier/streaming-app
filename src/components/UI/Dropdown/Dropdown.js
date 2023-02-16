@@ -2,7 +2,13 @@ import React, { useState, useEffect, useCallback } from "react";
 import classes from "./Dropdown.module.css";
 import MenuItem from "./MenuItem";
 
-const Dropdown = ({ title, options, className = "", onSelectOption }) => {
+const Dropdown = ({
+  title,
+  options,
+  className = "",
+  onSelectOption,
+  showWarning,
+}) => {
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [menuItems, setMenuItems] = useState(options);
 
@@ -43,7 +49,11 @@ const Dropdown = ({ title, options, className = "", onSelectOption }) => {
 
   return (
     <div className={`${classes.wrapper} ${className}`}>
-      <div className={classes.header} role="button" onClick={handleHeaderClick}>
+      <div
+        className={`${classes.header} ${showWarning && classes.warning}`}
+        role="button"
+        onClick={handleHeaderClick}
+      >
         <div className={classes.headerTitle}>{title}</div>
       </div>
       {isMenuShown && (

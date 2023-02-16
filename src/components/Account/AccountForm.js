@@ -6,8 +6,8 @@ import classes from "./AccountForm.module.css";
 import Button from "../UI/Button";
 import MultiLineInput from "../UI/Input/MultiLineInput";
 import DropdownInput from "../UI/Input/DropdownInput";
-import { BIRTH } from "./AccountConstants";
-import { MONTH_OPTIONS } from "./AccountConstants";
+import { BIRTH, INPUT, MONTH_OPTIONS } from "./AccountConstants";
+import { StringUtils } from "../../utils/StringUtils";
 
 const AccountForm = () => {
   const history = useHistory();
@@ -21,6 +21,12 @@ const AccountForm = () => {
   const [yearOptions, setYearOptions] = useState([]);
 
   const [showFirstNameWarn, setShowFirstNameWarn] = useState(false);
+  const [showLastNameWarn, setShowLastNameWarn] = useState(false);
+  const [showUsernameWarn, setShowUsernameWarn] = useState(false);
+  const [showPasswordWarn, setShowPasswordWarn] = useState(false);
+  const [showDayWarning, setShowDayWarning] = useState(false);
+  const [showMonthWarning, setShowMonthWarning] = useState(false);
+  const [showYearWarning, setShowYearWarning] = useState(false);
 
   const firstNameRef = useRef("");
   const lastNameRef = useRef("");
@@ -111,29 +117,116 @@ const AccountForm = () => {
     switch (data.inputId) {
       case BIRTH.DAY:
         setSelectedDay(data.title);
+        setShowDayWarning(false);
         break;
       case BIRTH.MONTH:
         setSelectedMonth(data.title);
         setSelectedMonthId(data.id);
+        setShowMonthWarning(false);
         break;
       case BIRTH.YEAR:
         setSelectedYear(data.title);
+        setShowYearWarning(false);
         break;
       default:
     }
   };
 
+  const hasValidUsername = () => {
+    const username = usernameRef.current.value.trim();
+    if (username === "" || username.length < 3) {
+      return false;
+    }
+    return true;
+  };
+
+  const hasValidPassword = () => {
+    const password = passwordRef.current.value.trim();
+
+    const hasUpperCase = StringUtils.containsLowerOrUpperCase(password);
+    const hasLowerCase = StringUtils.containsLowerOrUpperCase(password, true);
+    const hasNumber = StringUtils.containsNumber(password);
+
+    if (
+      password === "" ||
+      password.length < 10 ||
+      hasUpperCase === false ||
+      hasLowerCase === false ||
+      hasNumber === false
+    ) {
+      return false;
+    }
+    return true;
+  };
+
   const handleBlur = (inputId) => {
-    if (inputId === "firstName") {
+    if (inputId === INPUT.FIRST_NAME) {
       if (firstNameRef.current.value.trim() === "") {
         setShowFirstNameWarn(true);
+      }
+    } else if (inputId === INPUT.LAST_NAME) {
+      if (lastNameRef.current.value.trim() === "") {
+        setShowLastNameWarn(true);
+      }
+    } else if (inputId === INPUT.USERNAME) {
+      if (hasValidUsername() === false) {
+        setShowUsernameWarn(true);
+      }
+    } else if (inputId === INPUT.PASSWORD) {
+      if (hasValidPassword() === false) {
+        setShowPasswordWarn(true);
       }
     }
   };
 
   const handleKeyDown = (inputId) => {
-    if (inputId === "firstName") {
+    if (inputId === INPUT.FIRST_NAME) {
       setShowFirstNameWarn(false);
+    } else if (inputId === INPUT.LAST_NAME) {
+      setShowLastNameWarn(false);
+    } else if (inputId === INPUT.USERNAME) {
+      setShowUsernameWarn(false);
+    } else if (inputId === INPUT.PASSWORD) {
+      setShowPasswordWarn(false);
+    }
+  };
+
+  const handleCreateAccount = () => {
+    let isValid = true;
+
+    if (firstNameRef.current.value.trim() === "") {
+      setShowFirstNameWarn(true);
+      isValid = false;
+    }
+
+    if (lastNameRef.current.value.trim() === "") {
+      setShowLastNameWarn(true);
+      isValid = false;
+    }
+
+    if (hasValidUsername() === false) {
+      setShowUsernameWarn(true);
+      isValid = false;
+    }
+
+    if (hasValidPassword() === false) {
+      setShowPasswordWarn(true);
+      isValid = false;
+    }
+
+    if (selectedDay === "") {
+      isValid = false;
+      setShowDayWarning(true);
+    }
+
+    if (selectedMonth === "") {
+      isValid = false;
+      setShowMonthWarning(true);
+    }
+
+    if (selectedYear === "") {
+      isValid = false;
+      setShowYearWarning(true);
     }
   };
 
@@ -143,7 +236,7 @@ const AccountForm = () => {
 
       <MultiLineInput
         ref={firstNameRef}
-        inputId={"firstName"}
+        inputId={INPUT.FIRST_NAME}
         inputType={"text"}
         labelName={"First Name"}
         maxLength={20}
@@ -155,12 +248,15 @@ const AccountForm = () => {
       />
       <MultiLineInput
         ref={lastNameRef}
-        inputId={"lastName"}
+        inputId={INPUT.LAST_NAME}
         inputType={"text"}
         labelName={"Last Name"}
         maxLength={40}
         autoFocus={false}
         lettersOnly={true}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        showWarning={showLastNameWarn}
       />
 
       <div className={classes.birthdaySection}>
@@ -173,6 +269,7 @@ const AccountForm = () => {
             options={dayOptions}
             onSelectItem={handleDropdownSelection}
             dropdownClass={classes.birthDay}
+            showWarning={showDayWarning}
           />
           <DropdownInput
             inputId={BIRTH.MONTH}
@@ -181,6 +278,7 @@ const AccountForm = () => {
             options={MONTH_OPTIONS}
             onSelectItem={handleDropdownSelection}
             dropdownClass={classes.birthMonth}
+            showWarning={showMonthWarning}
           />
           <DropdownInput
             inputId={BIRTH.YEAR}
@@ -189,32 +287,41 @@ const AccountForm = () => {
             options={yearOptions}
             onSelectItem={handleDropdownSelection}
             dropdownClass={classes.birthYear}
+            showWarning={showYearWarning}
           />
         </div>
       </div>
 
       <MultiLineInput
         ref={usernameRef}
-        inputId={"username"}
+        inputId={INPUT.USERNAME}
         inputType={"text"}
         labelName={"Username"}
         maxLength={20}
         autoFocus={false}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        showWarning={showUsernameWarn}
       />
       <MultiLineInput
         ref={passwordRef}
-        inputId={"password"}
-        inputType={"text"}
+        inputId={INPUT.PASSWORD}
+        inputType={"password"}
         labelName={"Password"}
         maxLength={20}
         autoFocus={false}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        showWarning={showPasswordWarn}
       />
 
       <div className={classes.actions}>
         <Button btnClasses="green" onClick={onBackHandler}>
           Back
         </Button>
-        <Button btnClasses="green">Create Account</Button>
+        <Button btnClasses="green" onClick={handleCreateAccount}>
+          Create Account
+        </Button>
       </div>
     </form>
   );
