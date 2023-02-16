@@ -1,0 +1,45 @@
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.header {
+  border: 1px solid #252525;
+  padding: 5px 10px 5px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 32px;
+}
+
+.headerTitle {
+  font-size: 1rem;
+  font-family: "Cabin", "sans-serif";
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #858585;
+  border-radius: 4px;
+  position: absolute;
+  height: 260px;
+  overflow: scroll;
+}
+
+.menuItem {
+  border: none;
+  padding: 5px 10px 5px 10px;
+  font-size: 1rem;
+  font-family: "Cabin", "sans-serif";
+}
+
+.menuItem:hover {
+  background-color: rgb(54, 247, 134);
+  color: white;
+  border: #eca53b;
+  cursor: pointer;
+}
+
+.warning {
+  border: 1.5px solid red;
+}

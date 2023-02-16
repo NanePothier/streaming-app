@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import classes from './StartScreen.module.css';
-import Button from '../UI/Button';
-import LoginModal from '../Login/LoginModal';
-import StartTrial from './StartTrial';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import classes from "./StartScreen.module.css";
+import Button from "../UI/Button";
+import LoginModal from "../Login/LoginModal";
+import StartTrial from "./StartTrial";
 
 const StartScreen = (props) => {
   const [loginFormShown, setLoginFormShown] = useState(false);
-  const isAuth = useSelector((state) => state.isAuthenticated);
-  const user = useSelector((state) => state.currentUser);
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.currentUser);
 
   const showLoginFormHandler = () => {
     setLoginFormShown(true);
