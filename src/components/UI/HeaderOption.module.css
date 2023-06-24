@@ -1,0 +1,19 @@
+.option {
+  color: rgba(255, 255, 255, 0.635);
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-right: 3.5rem;
+  padding: 7px 15px;
+}
+
+.option:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 5px;
+}
+
+.selected {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: 5px;
+}

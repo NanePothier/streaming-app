@@ -1,4 +1,4 @@
-.header {
+.welcomeHeader {
   background-color: white;
   display: flex;
   align-items: center;
@@ -6,9 +6,27 @@
   box-shadow: 2px 2px 5px rgb(197, 197, 197);
 }
 
-.logo {
+.welcomeLogo {
   font-size: 1.4rem;
   padding: 25px;
   margin-bottom: 3px;
   cursor: pointer;
+}
+
+.homeHeader {
+  display: flex;
+}
+
+.homeLogo {
+  font-size: 1.4rem;
+  padding: 45px;
+  padding-right: 70px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  color: white;
+}
+
+.selections {
+  display: flex;
+  align-items: center;
 }

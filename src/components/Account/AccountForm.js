@@ -235,17 +235,17 @@ const AccountForm = () => {
       const formattedDay = `${selectedDay}`.padStart(2, "0");
       const formattedMonth = `${selectedMonthId}`.padStart(2, "0");
 
-      sendRequest(
-        "API/endpoint",
-        "POST",
-        {
-          firstName: firstNameRef.current.value.trim(),
-          lastName: lastNameRef.current.value.trim(),
-          birthday: `${formattedMonth}/${formattedDay}/${selectedYear}`,
-          username: usernameRef.current.value.trim(),
-          password: passwordRef.current.value.trim(),
-        }
-      );
+      // normally await should be used here to wait for the promise to be resolved before
+      // directing the user to the home page, but since this does not contain a real endpoint...
+      sendRequest("API/endpoint", "POST", {
+        firstName: firstNameRef.current.value.trim(),
+        lastName: lastNameRef.current.value.trim(),
+        birthday: `${formattedMonth}/${formattedDay}/${selectedYear}`,
+        username: usernameRef.current.value.trim(),
+        password: passwordRef.current.value.trim(),
+      });
+
+      history.push("/home");
     }
   };
 
