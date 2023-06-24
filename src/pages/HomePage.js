@@ -1,5 +1,8 @@
+import React from "react";
+import HomeContainer from "../components/Home/HomeContainer";
+
 const HomePage = (props) => {
-  return <div style={{ color: 'white' }}>Home Screen</div>;
+  return <HomeContainer />;
 };
 
 export default HomePage;
