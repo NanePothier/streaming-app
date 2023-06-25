@@ -1,0 +1,14 @@
+.row {
+  margin: 25px 10px;
+}
+
+.rowTitle {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 6px;
+  margin-left: 10px;
+}
+
+.movieTiles {
+  display: flex;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./Header.module.css";
 import Button from "./Button";
@@ -7,30 +7,10 @@ import HeaderOption from "./HeaderOption";
 
 const WELCOME = "welcome";
 const HOME = "home";
-const defaultSelections = [
-  {
-    name: "Home",
-    isSelected: true,
-  },
-  {
-    name: "My Stuff",
-    isSelected: false,
-  },
-  {
-    name: "TV Shows",
-    isSelected: false,
-  },
-  {
-    name: "Movies",
-    isSelected: false,
-  },
-];
 
-const Header = ({ headerType }) => {
+const Header = ({ headerType, selections, onSelectionClick }) => {
   const history = useHistory();
   const logo = headerType === WELCOME ? "BumbleBee" : "BUMBLEBEE";
-
-  const [selections, setSelections] = useState(defaultSelections);
 
   const loginHandler = () => {};
 
@@ -43,20 +23,7 @@ const Header = ({ headerType }) => {
   };
 
   const handleOptionSelected = (option) => {
-    setSelections((prevSelections) =>
-      prevSelections.map((selection) => {
-        if (selection.name === option) {
-          return {
-            name: option,
-            isSelected: true,
-          };
-        }
-        return {
-          name: selection.name,
-          isSelected: false,
-        };
-      })
-    );
+    onSelectionClick(option);
   };
 
   return (
@@ -100,10 +67,14 @@ const Header = ({ headerType }) => {
 
 Header.propTypes = {
   headerType: PropTypes.string,
+  selections: PropTypes.array,
+  onSelectionClick: PropTypes.func,
 };
 
 Header.defaultProps = {
   headerType: "welcome",
+  selections: [],
+  onSelectionClick: () => {},
 };
 
 export default Header;
