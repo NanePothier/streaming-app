@@ -75,3 +75,33 @@
   border: 2px solid rgb(32, 32, 32);
   color: white;
 }
+
+.round {
+  border-radius: 50%;
+}
+
+.point {
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  top: 150px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+}
+
+.slider:hover,
+.slider:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sliderLeft {
+  left: 5px;
+}
+
+.sliderRight {
+  right: 25px;
+}

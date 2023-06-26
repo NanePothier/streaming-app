@@ -1,13 +1,14 @@
-import React from 'react';
-import classes from './Button.module.css';
+import React from "react";
+import classes from "./Button.module.css";
+import PropTypes from "prop-types";
 
 const Button = (props) => {
-  const classesArray = props.btnClasses.trim().split(' ');
+  const classesArray = props.btnClasses.trim().split(" ");
 
   let allClasses = classesArray
     .reduce((prevValue, currValue) => {
       return prevValue + ` ${classes[currValue]}`;
-    }, '')
+    }, "")
     .trim();
 
   return (
@@ -19,6 +20,18 @@ const Button = (props) => {
       {props.children}
     </button>
   );
+};
+
+Button.propTypes = {
+  btnClasses: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  btnClasses: "",
+  onClick: () => {},
+  disabled: false,
 };
 
 export default Button;
