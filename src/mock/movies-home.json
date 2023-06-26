@@ -1,0 +1,87 @@
+{
+    "categories": [
+        {
+            "type": "Recommended",
+            "movies": [
+                {
+                    "title": "Planet Earth",
+                    "description": "A world full of plants and animals."
+                },
+                {
+                    "title": "The Invisible Man",
+                    "description": "Laura is haunted by her invisible ex-boyfriend."
+                },
+                {
+                    "title": "Harry Potter",
+                    "description": "A world full of witches and wizards."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Planet Earth",
+                    "description": "A world full of plants and animals."
+                },
+                {
+                    "title": "The Invisible Man",
+                    "description": "Laura is haunted by her invisible ex-boyfriend."
+                },
+                {
+                    "title": "Harry Potter",
+                    "description": "A world full of witches and wizards."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                }
+            ]
+        },
+        {
+            "type": "Trending",
+            "movies": [
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                }
+            ]
+        },
+        {
+            "type": "My Library",
+            "movies": [
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                },
+                {
+                    "title": "Holiday",
+                    "description": "It is fun to go on vacation."
+                }
+            ]
+        }
+    ]
+}

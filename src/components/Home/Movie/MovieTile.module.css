@@ -1,0 +1,44 @@
+.movieTile {
+  width: 250px;
+  height: 260px;
+  border-radius: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 6px;
+  box-shadow: 6px 6px 4px black;
+}
+
+.image {
+  width: 245px;
+  height: 165px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 6px 6px 0 0;
+  z-index: -1;
+  color: rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.infoBox {
+  width: 100%;
+  height: 95px;
+  border-top: 3px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  padding: 12px 15px;
+}
+
+.title {
+  color: rgb(97, 251, 161);
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+
+.description {
+  color: white;
+  font-size: 14px;
+}
