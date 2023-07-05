@@ -9,14 +9,19 @@ export const useHttp = () => {
     setIsLoading(true);
     setError(null);
 
+    const requestObj = {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
     try {
-      const response = await fetch(endpoint, {
-        method,
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      if (method === "POST") {
+        requestObj.body = JSON.stringify(body);
+      }
+
+      const response = await fetch(endpoint, requestObj);
 
       if (!response.ok) {
         throw new Error("Request failed.");

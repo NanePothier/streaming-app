@@ -20,7 +20,7 @@ const AccountContainer = (props) => {
       <Header />
       <div className={classes.formContainer}>
         <SelectedPlan plan={selectedPlan} />
-        <AccountForm />
+        <AccountForm selectedPlanId={selectedPlanId} />
       </div>
     </div>
   );
