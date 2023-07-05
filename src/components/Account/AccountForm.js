@@ -343,6 +343,10 @@ const AccountForm = ({ selectedPlanId }) => {
         onKeyDown={handleKeyDown}
         showWarning={showPasswordWarn}
       />
+      <div className={classes.pwdText}>
+        The password must be at least 10 characters long, have <br></br> one
+        lowercase and uppercase letter, and a number.
+      </div>
 
       <div className={classes.actions}>
         <Button btnClasses="green" onClick={onBackHandler}>
