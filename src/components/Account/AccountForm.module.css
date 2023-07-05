@@ -37,6 +37,14 @@
   width: 80px;
 }
 
+.pwdText {
+  color: rgb(177, 177, 177);
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 350px;
+}
+
 @media (max-width: 65rem) {
   .form {
     width: 470px;

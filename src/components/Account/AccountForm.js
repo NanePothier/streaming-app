@@ -10,7 +10,7 @@ import { BIRTH, INPUT, MONTH_OPTIONS } from "./AccountConstants";
 import { StringUtils } from "../../utils/StringUtils";
 import { useHttp } from "../../hooks/useHttp";
 
-const AccountForm = () => {
+const AccountForm = ({ selectedPlanId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { sendRequest, isLoading, data } = useHttp();
@@ -193,7 +193,7 @@ const AccountForm = () => {
     }
   };
 
-  const handleCreateAccount = () => {
+  const handleCreateAccount = async () => {
     let isValid = true;
 
     if (firstNameRef.current.value.trim() === "") {
@@ -235,16 +235,26 @@ const AccountForm = () => {
       const formattedDay = `${selectedDay}`.padStart(2, "0");
       const formattedMonth = `${selectedMonthId}`.padStart(2, "0");
 
-      // normally await should be used here to wait for the promise to be resolved before
-      // directing the user to the home page, but since this does not contain a real endpoint...
-      sendRequest("API/endpoint", "POST", {
-        firstName: firstNameRef.current.value.trim(),
-        lastName: lastNameRef.current.value.trim(),
-        birthday: `${formattedMonth}/${formattedDay}/${selectedYear}`,
-        username: usernameRef.current.value.trim(),
-        password: passwordRef.current.value.trim(),
-      });
+      // ----- saving data to database -----
+      // await sendRequest(
+      //   "endpoint",
+      //   "POST",
+      //   {
+      //     firstName: firstNameRef.current.value.trim(),
+      //     lastName: lastNameRef.current.value.trim(),
+      //     birthday: `${formattedMonth}/${formattedDay}/${selectedYear}`,
+      //     username: usernameRef.current.value.trim(),
+      //     password: passwordRef.current.value.trim(),
+      //     planId: selectedPlanId,
+      //   }
+      // );
 
+      dispatch(
+        userDataActions.updateUserData({
+          username: usernameRef.current.value.trim(),
+          firstName: firstNameRef.current.value.trim(),
+        })
+      );
       history.push("/home");
     }
   };
@@ -333,6 +343,10 @@ const AccountForm = () => {
         onKeyDown={handleKeyDown}
         showWarning={showPasswordWarn}
       />
+      <div className={classes.pwdText}>
+        The password must be at least 10 characters long, have <br></br> one
+        lowercase and uppercase letter, and a number.
+      </div>
 
       <div className={classes.actions}>
         <Button btnClasses="green" onClick={onBackHandler}>
