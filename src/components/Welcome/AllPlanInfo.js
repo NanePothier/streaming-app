@@ -1,5 +1,5 @@
-import React from "react";
-import classes from "./AllPlanInfo.module.css";
+import React from 'react';
+import classes from './AllPlanInfo.module.css';
 
 const AllPlanInfo = () => {
   return (
@@ -11,7 +11,7 @@ const AllPlanInfo = () => {
         </div>
         <div
           className={`${classes.heading3} ${classes.text}`}
-          data-testid={"heading3"}
+          data-testid={'heading3'}
         >
           Stream full seasons of exclusive series, current-season episodes, hit
           movies, BumbleBee Originals, kids shows and more.
