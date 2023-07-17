@@ -1,41 +1,61 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { userDataActions } from "../../store";
-import classes from "./Plan.module.css";
-import Button from "../UI/Button";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { userDataActions } from '../../store';
+import PropTypes from 'prop-types';
+import classes from './Plan.module.css';
+import Button from '../UI/Button';
 
-const Plan = (props) => {
-  let planClasses = props.promote
+const Plan = ({ id, type, title, info, price, description, promote }) => {
+  let planClasses = promote
     ? `${classes.plan} ${classes.promote}`
     : `${classes.plan}`;
-  let btnClasses = props.promote ? "select black" : "select white";
+  let btnClasses = promote ? 'select black' : 'select white';
 
   const history = useHistory();
   const dispatch = useDispatch();
 
   const planSelectionHandler = () => {
-    dispatch(userDataActions.updatePlan(props.id));
-    history.push(`/account?plan=${props.id}`);
+    dispatch(userDataActions.updatePlan(id));
+    history.push(`/account?plan=${id}`);
   };
 
   return (
     <div className={planClasses}>
-      {props.promote && props.type === "base" && (
+      {promote && type === 'base' && (
         <div className={classes.badge}>MOST POPULAR</div>
       )}
-      <h3 className={classes.title}>{props.title}</h3>
-      <div className={classes.info}>{props.info}</div>
+      <h3 className={classes.title}>{title}</h3>
+      <div className={classes.info}>{info}</div>
       <div className={classes.price}>
-        <span className={classes.highlight}>{`$${props.price}`}</span>
+        <span className={classes.highlight}>{`$${price}`}</span>
         <span className={classes.month}>{`/month`}</span>
       </div>
-      <div className={classes.description}>{props.description}</div>
+      <div className={classes.description} data-testid={'description'}>
+        {description}
+      </div>
       <Button btnClasses={btnClasses} onClick={planSelectionHandler}>
         SELECT
       </Button>
     </div>
   );
+};
+
+Plan.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  info: PropTypes.string,
+  price: PropTypes.number.isRequired,
+  description: PropTypes.string,
+  promote: PropTypes.bool,
+};
+
+Plan.defaultProps = {
+  title: '',
+  info: '',
+  description: '',
+  promote: false,
 };
 
 export default Plan;

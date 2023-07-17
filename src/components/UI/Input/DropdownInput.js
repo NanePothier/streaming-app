@@ -1,6 +1,6 @@
-import React from "react";
-import Dropdown from "../Dropdown/Dropdown";
-import classes from "./DropdownInput.module.css";
+import React from 'react';
+import Dropdown from '../Dropdown/Dropdown';
+import classes from './DropdownInput.module.css';
 
 const DropdownInput = ({
   inputId,
@@ -17,9 +17,7 @@ const DropdownInput = ({
 
   return (
     <div className={classes.section}>
-      <label htmlFor={inputId} className={classes.label}>
-        {labelName}
-      </label>
+      <div className={classes.label}>{labelName}</div>
       <Dropdown
         title={title}
         options={options}
