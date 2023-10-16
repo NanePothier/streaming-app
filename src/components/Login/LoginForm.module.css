@@ -24,7 +24,7 @@
 
 .input {
   margin-top: 0.2rem;
-  background-color: rgb(184, 247, 210);
+  background-color: white;
   border: 1px solid rgb(58, 58, 58);
   border-radius: 5px;
   outline: none;
@@ -37,4 +37,8 @@ h3 {
 
 .actions {
   margin-top: 10px;
+}
+
+.error {
+  color: red;
 }
