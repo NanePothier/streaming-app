@@ -1,34 +1,34 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 
-  const sendRequest = async (endpoint, method = "GET", body = {}) => {
+  const sendRequest = async (endpoint, method = 'GET', body = {}) => {
     setIsLoading(true);
     setError(null);
 
     const requestObj = {
       method,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     try {
-      if (method === "POST") {
+      if (method === 'POST') {
         requestObj.body = JSON.stringify(body);
       }
 
       const response = await fetch(endpoint, requestObj);
 
-      if (!response.ok) {
-        throw new Error("Request failed.");
-      }
-
       const responseData = await response.json();
       setData(responseData);
+
+      if (!response.ok) {
+        throw new Error('Request failed.');
+      }
     } catch (e) {
       setError(e);
     } finally {

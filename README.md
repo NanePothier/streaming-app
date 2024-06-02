@@ -1,3 +1,12 @@
-Streaming app: a practice project resembling the Hulu streaming app
+# Streaming App
 
-Note: change start script in package.json to "react-scripts --openssl-legacy-provider start"
+A React application resembling the Hulu streaming app.
+
+## Start the application
+
+Run the app with npm start
+and navigate to `http://localhost:3000/`
+
+## Server
+
+This application uses the movie-server server to send requests to.
